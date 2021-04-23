@@ -173,4 +173,30 @@ def profile(request,name):
     return render(request,'blog/profile.html',context={'post_list':post_list,'message':message
     })
 
+def edit(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    category_list = Category.objects.all()
+    message=None
+
+    if request.user!=post.author and  not request.user.is_superuser:
+        message="没有权限修改！"
+        return render(request,'blog/edit.html',context={'category_list':category_list,'message':message})
+
+    if request.method == "POST":
+        cate_name=request.POST.get('category')
+        title=request.POST.get('title')
+        body=request.POST.get('body')
+        excerpt=request.POST.get('excerpt')
+        message="除摘要外都须填写！"
+        if title and body and cate_name:
+            category = get_object_or_404(Category, name=cate_name)
+            post.title = title
+            post.category = category
+            post.body = body
+            post.excerpt=excerpt
+            post.save()
+            return HttpResponseRedirect('/')
+    return render(request,'blog/edit.html',context={'category_list':category_list,'message':message,'post':post
+    })
+
 

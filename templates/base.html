@@ -34,7 +34,7 @@
     </form>
       <li><a href="https://github.com/GOODChives">主页</a></li>
       <li><a href="https://github.com/GOODChives/blog_test">关于</a></li>
-      <li class="dropdown open"> <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">{{request.user.username}}<b class="caret"></b></a>
+      <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username">{{request.user.username}}</span> <i class="icon-caret-down small"></i> </a>
         <ul class="dropdown-menu">
           <li><a href="{% url 'blog:profile' request.user.username %}">个人主页</a></li>
           <li><a href="{% url 'blog:blog' %}">POST</a></li>
@@ -55,7 +55,7 @@
       </form>
       <li><a href="https://github.com/GOODChives">主页</a></li>
       <li><a href="javascript:;">关于</a></li>
-      <li class="dropdown open"> <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">USER <b class="caret"></b></a>
+      <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#">  <span class="username">USER</span> <i class="icon-caret-down small"></i> </a>
         <ul class="dropdown-menu">
           <li><a href="{% url 'blog:login' %}">Login</a></li>
           
