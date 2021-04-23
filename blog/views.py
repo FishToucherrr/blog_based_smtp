@@ -180,7 +180,7 @@ def edit(request, pk):
 
     if request.user!=post.author and  not request.user.is_superuser:
         message="没有权限修改！"
-        return render(request,'blog/edit.html',context={'category_list':category_list,'message':message})
+        return render(request,'blog/edit.html',context={'category_list':category_list,'message':message,'post':post})
 
     if request.method == "POST":
         cate_name=request.POST.get('category')
