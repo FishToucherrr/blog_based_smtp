@@ -1,0 +1,12 @@
+<div class="widget widget-recent-posts">
+    <h3 class="widget-title">最多浏览</h3>
+    <ul>
+      {% for post in most_viewed_list %}
+        <li>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+      {% empty %}
+        暂无文章！
+      {% endfor %}
+    </ul>
+  </div>

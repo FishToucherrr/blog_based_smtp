@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="page-content">
+    <div class="content container">
+      {% if message %}
+                    <div class="alert alert-info fade in">{{ message }}</div>
+      {% endif %}
+      {% if search %}
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="page-title"><small>关键词: </small>{{ search }} </h2>
+        </div>
+      </div>
+      {% else %}
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="page-title">最新发布 <small>Latest Published</small></h2>
+        </div>
+      </div>
+      {% endif %}
+      
+      {%for post in post_list %}
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="widget-container">
+            <div class="padded"> <a href="{{ post.get_absolute_url }}"><span class="h3">{{post.title}}</span></a>
+              <form method="post" action="{% url 'blog:index' %}" class="no-margin">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="form-group no-margin" style="display:none">
+                        <div class="input-group input-group-lg">
+                            <input type="text" name='de' placeholder="Your Name" value="{{post.id}}" class="form-control input-lg" id="email">
+                        </div>
+                    </div>
+                </fieldset>
+				      <button class="close close-sm" type="submit"><i class="icon-remove"></i></button>         
+            </form>
+              <div class="text-center padder m-t"> <p>{{post.excerpt}}</p> </div>
+            </div>
+            <div class="widget-footer lt">
+              <div class="row">
+                <div class="col-xs-2"> <small class="text-muted block">--作者--</small> <span>{{post.author}}</span> </div>
+                <div class="col-xs-2"> <small class="text-muted block">--发布时间--</small> <span>{{post.created_time}}</span> </div>
+                <div class="col-xs-2"> <small class="text-muted block">--分类--</small> <span>{{post.category.name}}</span> </div>
+                
+                
+                <div class="col-xs-2"> <small class="text-muted block">--评论--</small> <span>{{post.comment_set.count}}</span> </div>
+                <div class="col-xs-2"> <small class="text-muted block">--阅读--</small> <span>{{post.views}}</span> </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div>
+        <ul class="pagination pagination-lg">
+          {% if post_list.has_previous %}
+          <li><a href="?page={{ post_list.previous_page_number }}">previous</a></li>
+          {% endif %}
+          <li><a href="#">Page {{ post_list.number }} of {{ post_list.paginator.num_pages }}.</a></li>
+          {% if post_list.has_next %}
+          <li><a href="?page={{ post_list.next_page_number }}">next</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+{% endblock main %}

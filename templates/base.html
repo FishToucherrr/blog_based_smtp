@@ -1,0 +1,110 @@
+{% load static %}
+{% load blog_extras %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>BLOG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/css/thin-admin.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/css/font-awesome.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/style/style.css' %}" rel="stylesheet">
+<link href="{% static 'blog/style/dashboard.css' %}" rel="stylesheet">
+<link href="{% static 'blog/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body >
+
+
+{% if request.user.username %}
+<div class="container">
+  <div class="top-navbar header b-b"> <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i> </a>
+    <div class="brand pull-left"> <a href="{% url 'blog:index' %}">BLOG</a></div>
+    <ul class="nav navbar-nav navbar-right">
+      <form class="pull-left" action="{% url 'blog:index' %}" method="post">
+        {%csrf_token%}
+      <input type="search" placeholder="Search..." class="search" id="search-input" name="search">
+    </form>
+      <li><a href="https://github.com/GOODChives">主页</a></li>
+      <li><a href="https://github.com/GOODChives/blog_test">关于</a></li>
+      <li class="dropdown open"> <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">{{request.user.username}}<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'blog:profile' request.user.username %}">个人主页</a></li>
+          <li><a href="{% url 'blog:blog' %}">POST</a></li>
+          <li><a href="{% url 'blog:signup' %}">注册新用户</a></li>
+          <li><a href="{% url 'blog:logout' %}">注销</a></li>
+        </ul>
+      </li>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  <div class="top-navbar header b-b"> <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i> </a>
+    <div class="brand pull-left"> <a href="{% url 'blog:index' %}">BLOG</a></div>
+    <ul class="nav navbar-nav navbar-right">
+      <form class="pull-left" action="{% url 'blog:index' %}" method="post">
+        {%csrf_token%}
+      <input type="search" placeholder="Search..." class="search" id="search-input" name="search">
+      </form>
+      <li><a href="https://github.com/GOODChives">主页</a></li>
+      <li><a href="javascript:;">关于</a></li>
+      <li class="dropdown open"> <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">USER <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'blog:login' %}">Login</a></li>
+          
+          <li><a href="{% url 'blog:signup' %}">Sign Up</a></li>
+         
+        </ul>
+      </li>
+  </div>
+</div>
+ {% endif %}
+
+<div class="wrapper">
+  <div class="left-nav">
+    <div id="side-nav">
+      <ul id="nav">
+        {% block toc %}
+        {% endblock toc %}
+
+        {% show_recent_posts %}
+        {% show_archives %}
+        {% show_categories %}
+        {% show_tags %}
+      </ul>
+    </div>
+  </div>
+
+
+
+  {% block main %}
+  {% endblock main %}
+
+</div>
+
+<div class="bottom-nav footer"> 2021 dxs </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'blog/js/jquery.js' %}"></script> 
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'blog/js/smooth-sliding-menu.js' %}"></script> 
+<script class="include" type="text/javascript" src="{% static 'blog/javascript/jquery191.min.js' %}"></script> 
+<script class="include" type="text/javascript" src="{% static 'blog/javascript/jquery.jqplot.min.js' %}"></script> 
+<script src="{% static 'blog/assets/sparkline/jquery.sparkline.js' %}" type="text/javascript"></script>
+<script src="{% static 'blog/assets/sparkline/jquery.customSelect.min.js' %}" ></script>
+<script src="{% static 'blog/assets/sparkline/sparkline-chart.js' %}"></script>
+<script src="{% static 'blog/assets/sparkline/easy-pie-chart.js' %}"></script>
+<script src="{% static 'blog/js/select-checkbox.js' %}"></script> 
+<script src="{% static 'blog/js/to-do-admin.js' %}"></script> 
+
+
+
+</body>
+</html>

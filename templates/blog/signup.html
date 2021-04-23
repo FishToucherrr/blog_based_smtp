@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/css/thin-admin.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/css/font-awesome.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'blog/style/style.css' %}" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+ 
+
+<div class="login-logo">
+	<a href="{% url 'blog:index' %}" ><h1 style="color: white;">BLOG</h1></a>
+    </div>
+
+<div class="widget">
+<div class="login-content">
+  <div class="widget-content" style="padding-bottom:0;">
+  <form method="post" action="/signup/" class="no-margin">
+                {% csrf_token %}
+                <h3 class="form-title">Sign Up</h3>
+
+                {% if message %}
+                    <div class="alert alert-info fade in">{{ message }}</div>
+                {% endif %}
+                
+                <fieldset>
+                    <div class="form-group no-margin">
+                        <label for="email">Username</label>
+
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="icon-user"></i>
+                                </span>
+                            <input type="text" name='username' placeholder="Your Name" class="form-control input-lg" id="email">
+                        </div>
+
+                    </div>
+                    <div class="form-group no-margin">
+                        <label for="email">Email</label>
+
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="icon-envelope"></i>
+                                </span>
+                            <input type="email" name='email' placeholder="Your Email" class="form-control input-lg" id="email">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="icon-lock"></i>
+                                </span>
+                            <input type="password" name='password' placeholder="Your Password" class="form-control input-lg" id="password">
+                        </div>
+
+                    </div>
+                </fieldset>
+               <div class="form-actions">
+				<label class="checkbox">
+				<div class="checker"><span><input type="checkbox" value="1" name="remember"></span></div> Remember me
+				</label>
+				<button class="btn btn-warning pull-right" type="submit">
+				Sign Up <i class="m-icon-swapright m-icon-white"></i>
+				</button> 
+                <div class="forgot"><a href="https://github.com/GOODChives" class="forgot">需要帮助？我也需要:)</a></div>           
+			</div>
+            
+            
+            </form>
+  
+  
+  </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'blog/js/jquery.js' %}"></script> 
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script> 
+
+
+
+ 
+
+</body>
+</html>
