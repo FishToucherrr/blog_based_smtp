@@ -17,7 +17,7 @@ def index(request):
         try:
             if de:
                 obj=Post.objects.get(id=de)
-                if request.user.is_superuser or request.user == obj.author:
+                if request.user.is_superuser or request.user.is_staff or request.user == obj.author:
                     obj.delete()
                     message="删除成功！"
                 else:
