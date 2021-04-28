@@ -213,3 +213,7 @@ admin.py    admin界面
 ### blogproject
 
 主要是settings.py
+
+### scripts
+
+生成数据的脚本
