@@ -1,12 +1,12 @@
 <div class="widget widget-recent-posts">
-    <h3 class="widget-title">最多浏览</h3>
+    <h3 class="widget-title">草稿箱</h3>
     <ul>
-      {% for post in most_viewed_list %}
+      {% for mail in mail_list %}
         <li>
-          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          <a href="{{ mail.get_absolute_url }}">{{ mail.title }}</a>
         </li>
       {% empty %}
-        暂无文章！
+        暂无邮件！
       {% endfor %}
     </ul>
   </div>

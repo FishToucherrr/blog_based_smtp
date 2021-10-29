@@ -5,10 +5,10 @@
     <div class="col-lg-12">
       <div class="widget">
         <div class="widget-header"> <i class="icon-file-alt"></i>
-          <h3>Post Your Blog :)</h3>
+          <h3>Write your Email :)</h3>
         </div>
         <div class="widget-content">
-          <form data-validate="parsley" novalidate method="post" class="form-horizontal" action="/blog/">
+          <form data-validate="parsley" novalidate method="post" class="form-horizontal" action="/mail/">
             {% csrf_token %}
             {% if message %}
                     <div class="alert alert-info fade in">{{ message }}</div>
@@ -25,27 +25,32 @@
                 </div>
               </div>
               <div class="control-group">
+                <div class="col-md-2">
+                  <label class="control-label" for="title">receiver</label>
+                  </div>
+                  <div class="col-md-10">
+                  <div class="form-group">
+                    {%for receiver in receiver_list %}
+                      <label required class="form-control parsley-validated" >
+                      <input value="{{receiver.email}}" type="checkbox" name="receiver">{{receiver.name}} </label>
+                    {%empty%}
+                    暂无联系人！
+                    {%endfor%}
+                  </div>
+                  </div>
+                </div>
+              <div class="control-group">
               <div class="col-md-2">
                 <label class="control-label" for="description">Body</label>
                 </div>
                 <div class="col-md-10">
                 <div class="form-group">
                   <textarea class="form-control" name="body" rows="8" id="description"></textarea>
-                  <span class="help-block">We recommend you use markdown-format :)</span> 
+                  <span class="help-block">We do not support markdonw_format yet.</span> 
                   </div>
                   </div>
               </div>
-              <div class="control-group">
-                <div class="col-md-2">
-                  <label class="control-label" for="title">Excerpt</label>
-                  </div>
-                  <div class="col-md-10">
-                  <div class="form-group">
-                    <input type="text" required class="form-control parsley-validated" name="excerpt" id="title">
-                    <span class="help-block">Or We can automatically generate one excerpt for you :)</span> 
-                  </div>
-                  </div>
-                </div>
+
                 <div class="control-group">
                   <div class="col-md-2">
                     <label class="control-label" for="title">Category</label>

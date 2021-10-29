@@ -1,5 +1,4 @@
 {% load static %}
-{% load blog_extras %}
 
 <!DOCTYPE html>
 <html>
@@ -23,61 +22,25 @@
 <body >
 
 
-{% if request.user.username %}
 <div class="container">
   <div class="top-navbar header b-b"> <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i> </a>
-    <div class="brand pull-left"> <a href="{% url 'blog:index' %}">BLOG</a></div>
+    <div class="brand pull-left"> <a href="{% url 'blog:mail' %}">Email</a></div>
     <ul class="nav navbar-nav navbar-right">
-      <form class="pull-left" action="{% url 'blog:index' %}" method="post">
+      <form class="pull-left" action="{% url 'blog:drafts' %}" method="post">
         {%csrf_token%}
       <input type="search" placeholder="Search..." class="search" id="search-input" name="search">
     </form>
       <li><a href="https://github.com/GOODChives">主页</a></li>
-      <li><a href="https://github.com/GOODChives/blog_test">关于</a></li>
-      <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username">{{request.user.username}}</span> <i class="icon-caret-down small"></i> </a>
-        <ul class="dropdown-menu">
-          <li><a href="{% url 'blog:profile' request.user.username %}">个人主页</a></li>
-          <li><a href="{% url 'blog:blog' %}">POST</a></li>
-          <li><a href="{% url 'blog:signup' %}">注册新用户</a></li>
-          <li><a href="{% url 'blog:logout' %}">注销</a></li>
-        </ul>
-      </li>
+      <li><a href="https://github.com/GOODChives/blog_based_smtp">关于</a></li>
   </div>
 </div>
-{% else %}
-<div class="container">
-  <div class="top-navbar header b-b"> <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i> </a>
-    <div class="brand pull-left"> <a href="{% url 'blog:index' %}">BLOG</a></div>
-    <ul class="nav navbar-nav navbar-right">
-      <form class="pull-left" action="{% url 'blog:index' %}" method="post">
-        {%csrf_token%}
-      <input type="search" placeholder="Search..." class="search" id="search-input" name="search">
-      </form>
-      <li><a href="https://github.com/GOODChives">主页</a></li>
-      <li><a href="javascript:;">关于</a></li>
-      <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#">  <span class="username">USER</span> <i class="icon-caret-down small"></i> </a>
-        <ul class="dropdown-menu">
-          <li><a href="{% url 'blog:login' %}">Login</a></li>
-          
-          <li><a href="{% url 'blog:signup' %}">Sign Up</a></li>
-         
-        </ul>
-      </li>
-  </div>
-</div>
- {% endif %}
 
 <div class="wrapper">
   <div class="left-nav">
     <div id="side-nav">
       <ul id="nav">
-        {% block toc %}
-        {% endblock toc %}
-
-        {% show_recent_posts %}
-        {% show_archives %}
-        {% show_categories %}
-        {% show_tags %}
+        <li><a href="{% url 'blog:drafts' %}">草稿箱</a></li>
+        <li><a href="{% url 'blog:sent' %}">已发送</a></li>
       </ul>
     </div>
   </div>
