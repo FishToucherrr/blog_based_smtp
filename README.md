@@ -4,6 +4,7 @@
 + 存在bug 但是不改了  
 + 核心功能见blog/sklab.py  
 + socket_based_smtp
++ 从隔壁blog改过来的 所以一大堆多余的文件没删
 
 ## 环境配置
 
