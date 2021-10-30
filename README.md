@@ -1,9 +1,9 @@
 # blog_based_smtp
-基于blog图形界面的socket_based smtp  
-reference:https://github.com/GOODChives/blog_test   
-存在bug 但是不改了  
-核心功能见blog/sklab.py  
-socket_based_smtp
++ 基于blog图形界面的socket_based smtp  
++ reference:https://github.com/GOODChives/blog_test   
++ 存在bug 但是不改了  
++ 核心功能见blog/sklab.py  
++ socket_based_smtp
 
 ## 环境配置
 
