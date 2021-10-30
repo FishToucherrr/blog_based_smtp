@@ -10,7 +10,7 @@ reference:https://github.com/GOODChives/blog_test
 
 ```shell
 $ sudo apt-get update
-$ sudo apt-get install python3.8
+$ sudo apt-get install python3.9
 ```
 
 ### 安装pipenv
