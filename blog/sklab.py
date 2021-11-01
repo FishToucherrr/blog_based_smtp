@@ -3,7 +3,7 @@ from email.base64mime import body_encode
 import time
 
 
-def send_email(body,recvrs):
+def send_email(body,recvrs,title):
 
     msg = "\r\n "+ body
     endMsg = "\r\n.\r\n"
@@ -66,7 +66,7 @@ def send_email(body,recvrs):
         recv4 = clientSocket.recv(1024)
         recv4 = recv4.decode()
         print("After DATA command: "+recv4)
-        subject = "Subject: WARNING\r\n\r\n" 
+        subject = "Subject: "+title+"WARNING\r\n\r\n" 
         clientSocket.send(subject.encode())
         date = time.strftime("%a, %d %b %Y %H:%M:%S ", time.gmtime())
         date = date + "\r\n\r\n"
