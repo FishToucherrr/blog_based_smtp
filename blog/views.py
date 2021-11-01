@@ -88,7 +88,7 @@ def mail(request):
             email = Email(title=title,body=body,category=category)
             email.save()
             if cate_name=="已发送":
-                send_email(body,receiver)
+                send_email(body,receiver,title)
             return HttpResponseRedirect('/')
         else:
             return render(request,'blog/blog.html',context={'category_list':category_list,'message':message,'receiver_list':receiver_list
@@ -114,7 +114,7 @@ def edit(request, pk):
             email = Email(title=title,body=body,category=category)
             email.save()
             if cate_name=="已发送":
-                send_email(body,receiver)
+                send_email(body,receiver,title)
             return HttpResponseRedirect('/')
     return render(request,'blog/edit.html',context={'category_list':category_list,'message':message,'mail':mail,'receiver_list':receiver_list
     })
