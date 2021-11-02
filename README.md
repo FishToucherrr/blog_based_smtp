@@ -45,7 +45,7 @@ $ git clone https://github.com/GOODChives/blog_based_smtp.git
 ### 进入项目根目录 安装依赖
 
 ```shell
-$ cd blog_test
+$ cd blog_based_smtp
 $ pipenv install --deploy --ignore-pipfile
 ```
 
