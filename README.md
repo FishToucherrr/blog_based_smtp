@@ -1,10 +1,17 @@
 # blog_based_smtp
+
+> reference：
+>
+> https://github.com/GOODChives/blog_test 
+>
+> https://docs.python.org/3/library/ssl.html
+
 + 基于blog图形界面的socket_based smtp  
-+ reference:https://github.com/GOODChives/blog_test   
 + 存在bug 但是不改了  
 + 核心功能见blog/sklab.py  
 + socket_based_smtp
 + 从隔壁blog改过来的 所以一大堆多余的文件没删
++ `TLS/SSL wrapper for socket objects` are used.
 
 ## 环境配置
 
