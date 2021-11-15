@@ -21,9 +21,9 @@ context = ssl.create_default_context(purpose,cafile=None)
 serverPort = 465
 # SMTP使用587号端口
 rawSocket = socket(AF_INET, SOCK_STREAM)
-rawSocket.connect((mailServer, serverPort))
 
 ssl_sock=context.wrap_socket(rawSocket,server_hostname=mailServer)
+ssl_sock.connect((mailServer, serverPort))
 
 # connect只能接收一个参数
 # 从客户套接字中接收信息
